@@ -303,7 +303,7 @@ div.caption: {
 Allow the port 8080 in internal firewall
 ``````git
 sudo ufw allow 8080
-``````git
+``````
 
 Start the the application and make sure you are in folder : nodejs-proj-01
 ```git
