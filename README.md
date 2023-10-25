@@ -360,13 +360,13 @@ npm-debug.log
 Dockerfile
 .dockerignore
 ``````
-Before the the docker image make sure, you have install the docker https://docs.docker.com/desktop/install/windows-install/
+Before the the docker image make sure, you have install the docker  abd service should be running
 - For ubuntu machine 
 ``````git 
 sudo apt update -y  
 sudo apt install docker.io 
 ``````
-- For windows machine  - follow the link - 
+- For windows machine  - follow the link -  https://docs.docker.com/desktop/install/windows-install/
 
 Build an image from the docker file 
 - -t flag allow you to tag the image with memorable name
@@ -375,5 +375,58 @@ Build an image from the docker file
 
 ``````git 
 docker build -t abhiramdas99/nodejs-frontend .
+``````
+
+Check the image is create or not 
+``````git
+docker images -a 
+``````
+
+Run the following command to build the container 
+- --name = give some name 
+- 80 = expose to public . Make sure  this port number should be free in your docker host machin 
+- 8080 = port mention in docker file . its intername port 
+``````git
+docker run --name  nodejs-webapp-frontend -p 80:8080 -d  abhiramdas99/nodejs-frontend
+``````
+
+Check the container is running or not 
+``````git
+docker ps 
+``````
+Now cross check the site is running or not in  80 number port 
+![Alt text](image.png)
+
+
+Now push your custom image to docker hub , if you want to use in future 
+- 1st need to login to your docker hub 
+``````git
+docker login -u abhiramdas99
+``````
+
+- 2nd need to push the local image to github 
+``````git
+docker push abhiramdas99/nodejs-frontend
+``````
+![Alt text](image-1.png)
+
+## Now lets clean the local image and container and pull it from docker hub and build the container 
+- stop the running container 
+``````git
+docker stop  5f8024299af6
+``````
+- clean the images and cache content 
+``````git
+docker system prune -a
+``````
+##  Now pull the image from the docker hub and build the container 
+- pull the images
+``````git
+docker pull abhiramdas99/nodejs-frontend
+``````
+- repeat the same thing again 
+``````git
+docker run --name  nodejs-frontend -p 80:8080 -d abhiramdas99/nodejs-frontend
+docker ps 
 ``````
 
