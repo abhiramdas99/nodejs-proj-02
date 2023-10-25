@@ -56,7 +56,7 @@ const port = 8080;
 ``````
 
 set the route 
-``git
+```git
 router.use(function (req,res,next) {
   console.log('/' + req.method);
   next();
@@ -69,10 +69,10 @@ router.get('/', function(req,res){
 router.get('/sharks', function(req,res){
   res.sendFile(path + 'sharks.html');
 });
-``
+``````
 
 Finally, mount the router middleware and the application’s static assets and tell the app to listen on port 8080:
-``git
+```git
 app.use(express.static(path));
 app.use('/', router);
 
@@ -82,17 +82,17 @@ app.listen(port, function () {
 ```
 
 Next, add some static content to the application. Start by creating the views directory:
-``git
+```git
 mkdir views
 ````
 
 Open the landing page file, index.html:
-``git
+```git
 nano views/index.html
-``
+``````
 
 Add the following code to the file, which will import Boostrap and create a jumbotron component with a link to the more detailed sharks.html info page:
-``git
+```git
 <!DOCTYPE html>
 <html lang="en">
 
