@@ -309,6 +309,7 @@ Start the the application and make sure you are in folder : nodejs-proj-01
 ```git
 node app.js
 ```
+![image](https://github.com/abhiramdas99/nodejs-proj-01/assets/62290469/125ce41e-17e2-4c19-85e9-b6e36fe9e2de)
 
 
 
