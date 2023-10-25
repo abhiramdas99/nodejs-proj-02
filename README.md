@@ -310,5 +310,69 @@ Start the the application and make sure you are in folder : nodejs-proj-01
 node app.js
 ```
 
+#Add docker file
 
+make sure, you are in nodejs-proj-01
+```git
+pwd 
+```
+
+create a docker file 
+```git
+nano Dockerfile
+```
+
+Add the following thing to the docker file - nodejs-proj-01/Dockerfile: 
+```git
+FROM node:10-alpine
+
+RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
+
+WORKDIR /home/node/app
+
+COPY package*.json ./
+
+USER node
+
+RUN npm install
+
+#copy your application code with the appropriate permissions to the application directory on the container
+COPY --chown=node:node . .
+
+EXPOSE 8080
+
+CMD [ "node", "app.js" ]
+
+```
+
+Add a docker ignore file 
+- Before building the application image, add a .dockerignore fie. its similar to the .gitignore file. 
+- .dockerignore specifies which files and directories in your project directory should not be copied over to your container.
+``````git
+nano .dockerignore
+``````
+
+Inside the file add the following thing - 
+``````git
+node_modules
+npm-debug.log
+Dockerfile
+.dockerignore
+``````
+Before the the docker image make sure, you have install the docker https://docs.docker.com/desktop/install/windows-install/
+- For ubuntu machine 
+``````git 
+sudo apt update -y  
+sudo apt install docker.io 
+``````
+- For windows machine  - follow the link - 
+
+Build an image from the docker file 
+- -t flag allow you to tag the image with memorable name
+- put your docker hub username in the place of my name 
+- .  means build the image from the content of in root directory of the application 
+
+``````git 
+docker build -t abhiramdas99/nodejs-frontend .
+``````
 
