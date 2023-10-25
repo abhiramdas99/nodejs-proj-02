@@ -35,3 +35,8 @@ To install your project’s dependencies, run the following command:
 `````git
 npm install
 `````
+
+Add the git ignore file - 
+- Press CTRL+ Shift+P 
+- select nodejs gitignore file  and add
+
