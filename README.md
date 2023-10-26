@@ -429,4 +429,39 @@ docker pull abhiramdas99/nodejs-frontend
 docker run --name  nodejs-frontend -p 80:8080 -d abhiramdas99/nodejs-frontend
 docker ps 
 ``````
+## Add pm2 
 
+
+Make sure you are in the root directory - nodejs-proj2/
+
+Install the pm2 to your project 
+``````git
+npm install pm2 -g
+``````
+
+initialize through pm2
+``````git 
+pm2 init
+``````
+
+Replace the following content in ecosystem.config.js
+``````git 
+module.exports = {
+  apps : [{
+    name: "app",
+    script: "app.js",
+    env: {
+      NODE_ENV: "development",
+    },
+    env_production: {
+      NODE_ENV: "production",
+    }
+  }]
+}
+``````
+
+run the following command to start and top
+``````git
+pm2 start
+pm2 stop all 
+``````
